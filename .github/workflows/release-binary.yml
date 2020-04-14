@@ -26,7 +26,7 @@ jobs:
           prerelease: ${{ endsWith(github.ref, '-pre') }}
 
       - name: write release URL artifact
-        run: echo ${{ steps.create-release-step.outputs.upload_url }} > upload-url
+        run: echo '${{ steps.create-release-step.outputs.upload_url }}' > upload-url
 
       - name: store GH release upload URL
         uses: actions/upload-artifact@v1
