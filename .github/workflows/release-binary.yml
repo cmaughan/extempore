@@ -26,13 +26,13 @@ jobs:
           prerelease: ${{ endsWith(github.ref, '-pre') }}
 
       - name: write release URL artifact
-        run: echo ${{ steps.create-release-step.outputs.upload_url }} > gh-release-upload-url.txt
+        run: echo ${{ steps.create-release-step.outputs.upload_url }} > upload-url
 
       - name: store GH release upload URL
         uses: actions/upload-artifact@v1
         with:
           name: upload-url
-          path: gh-release-upload-url.txt
+          path: upload-url
 
 
 
@@ -81,8 +81,8 @@ jobs:
         id: slurp-upload-url
         run: |
           ls
-          cat gh-release-upload-url.txt
-          echo "::set-output name=upload-url::`cat gh-release-upload-url.txt`"
+          cat upload-url
+          echo "::set-output name=upload-url::`cat upload-url`"
 
       # to get the tag name
       - id: tag-name
