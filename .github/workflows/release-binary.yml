@@ -59,15 +59,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - if: contains(matrix.os, 'ubuntu')
-        name: deps
-        run: sudo apt-get install libasound2-dev xorg-dev libglu1-mesa-dev
+      # - if: contains(matrix.os, 'ubuntu')
+      #   name: deps
+      #   run: sudo apt-get install libasound2-dev xorg-dev libglu1-mesa-dev
 
-      - name: configure
-        run: mkdir build && cd build && cmake ${{ matrix.cmake-generator }} -DPACKAGE=ON ..
+      # - name: configure
+      #   run: mkdir build && cd build && cmake ${{ matrix.cmake-generator }} -DPACKAGE=ON ..
 
-      - name: build
-        run: cmake --build build --config Release --target package
+      # - name: build
+      #   run: cmake --build build --config Release --target package
 
       # these next two steps are necessary to pass the upload url from a step in
       # one job to a step in another
@@ -79,7 +79,10 @@ jobs:
 
       - name: slurp upload URL from artifact file
         id: slurp-upload-url
-        run: echo ::set-output name=upload-url::`cat gh-release-upload-url.txt`
+        run: |
+          ls
+          cat gh-release-upload-url.txt
+          echo "::set-output name=upload-url::`cat gh-release-upload-url.txt`"
 
       # to get the tag name
       - id: tag-name
