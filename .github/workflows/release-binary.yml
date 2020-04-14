@@ -80,9 +80,8 @@ jobs:
       - name: slurp upload URL from artifact file
         id: slurp-upload-url
         run: |
-          ls upload-url
-          cat upload-url/*
-          echo "::set-output name=upload-url::`cat upload-url`"
+          cat upload-url/upload-url
+          echo "::set-output name=upload-url::`cat upload-url/upload-url`"
 
       # to get the tag name
       - id: tag-name
