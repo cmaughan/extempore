@@ -89,7 +89,7 @@
 #include <sys/syscall.h>
 #endif
 
-#ifdef EXT_BOOST
+#ifdef _WIN32
 //#include <boost/asio.hpp>
 #include <experimental/buffer>
 #include <experimental/executor>
@@ -112,9 +112,6 @@
 #ifdef _WIN32
 #include <chrono>
 #include <thread>
-#elif EXT_BOOST
-#include <thread>
-#endif
 
 #ifndef _WIN32
 #include <unistd.h>
@@ -255,7 +252,7 @@ EXPORT void llvm_send_udp(char* host, int port, void* message, int message_lengt
 {
   int length = message_length;
 
-#ifdef EXT_BOOST // TODO: This should use WinSock on Windows
+#ifdef _WIN32 // TODO: This should use WinSock on Windows
   std::experimental::net::io_context context;
   // std::experimental::net::ip::udp::resolver::iterator end;
   std::experimental::net::ip::udp::resolver resolver(context);
@@ -287,13 +284,13 @@ EXPORT void llvm_send_udp(char* host, int port, void* message, int message_lengt
 #endif
 
 
-#ifdef EXT_BOOST
+#ifdef _WIN32
   std::experimental::net::ip::udp::socket* fd = 0;
 #else
   int fd = 0;
 #endif
 
-#ifdef EXT_BOOST
+#ifdef _WIN32
   int err = 0;
   std::experimental::net::io_context service;
   std::experimental::net::ip::udp::socket socket(service);

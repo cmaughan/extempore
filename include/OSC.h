@@ -45,7 +45,7 @@
 #include "EXTThread.h"
 
 
-#ifdef EXT_BOOST
+#ifdef _WIN32
 // #include <boost/asio.hpp>
 #include <experimental/buffer>
 #include <experimental/executor>
@@ -114,7 +114,7 @@ namespace extemp {
 	static pointer set_integer_type(scheme* _sc, pointer args);
 	static pointer send_from_server_socket(scheme* _sc, pointer args);		
 	static pointer set_msg_include_netaddr(scheme* _sc, pointer args);
-#ifdef EXT_BOOST
+#ifdef _WIN32
 	std::experimental::net::ip::udp::endpoint* getAddress() { return osc_address; }
 	std::experimental::net::ip::udp::endpoint* getClientAddress() { return osc_client_address; }
 	int* getClientAddressSize() { return &osc_client_address_size; }
@@ -163,7 +163,7 @@ namespace extemp {
     private:
       static OSC* singleton;
       EXTThread threadOSC;
-#ifdef EXT_BOOST
+#ifdef _WIN32
 	std::experimental::net::ip::udp::socket* socket;
 	std::experimental::net::ip::udp::socket* send_socket;
 	std::experimental::net::ip::udp::endpoint* osc_address;
