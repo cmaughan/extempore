@@ -39,7 +39,6 @@
 #include <unordered_map>
 
 #ifdef _WIN32
-//#include <boost/asio.hpp>
 #include <experimental/buffer>
 #include <experimental/executor>
 #include <experimental/internet>

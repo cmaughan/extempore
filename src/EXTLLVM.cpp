@@ -90,7 +90,6 @@
 #endif
 
 #ifdef _WIN32
-//#include <boost/asio.hpp>
 #include <experimental/buffer>
 #include <experimental/executor>
 #include <experimental/internet>
@@ -258,13 +257,11 @@ EXPORT void llvm_send_udp(char* host, int port, void* message, int message_lengt
   std::experimental::net::ip::udp::resolver resolver(context);
   std::stringstream ss;
   ss << port;
-  // std::experimental::net::ip::udp::resolver::query newQuery(boost::asio::ip::udp::v4(),host, ss.str());
   std::experimental::net::ip::udp::resolver::results_type res = resolver.resolve(std::experimental::net::ip::udp::v4(), host, ss.str());
   auto iter = res.begin();
   auto end = res.end();
   std::experimental::net::ip::udp::endpoint sa = *iter;
 
-  //boost::asio::ip::udp::endpoint sa = *iter;
 #else
   struct sockaddr_in sa;
   struct hostent* hen; /* host-to-IP translation */

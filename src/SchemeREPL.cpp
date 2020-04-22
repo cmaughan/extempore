@@ -106,12 +106,6 @@ bool SchemeREPL::connectToProcessAtHostname(const std::string& hostname, int por
         return false;
     }
     int rc;
-#ifdef _WIN32
-    // do nothing for boost
-#else
-    struct sockaddr_in sa;
-    struct hostent* hen; /* host-to-IP translation */
-#endif
 	// this whole "trying to connect" print-out is just confusing to newcomers
 	// I'd delete it, but SB likes to leave these comments in :)
 
@@ -134,6 +128,8 @@ bool SchemeREPL::connectToProcessAtHostname(const std::string& hostname, int por
     //std::cout << "resolved: " << ep << std::endl << std::flush;
     if(iter == end) {
 #else
+	struct sockaddr_in sa;
+	struct hostent* hen; /* host-to-IP translation */
     hen = gethostbyname(hostname.c_str());
     if (!hen) {
 #endif

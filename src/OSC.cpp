@@ -519,13 +519,6 @@ namespace extemp {
   {
     // seed rng for process
     // UNIV::initRand();
-
-    // SchemeProcess* scm = (SchemeProcess*) obj_p;
-    // boost::asio::io_service* io_service = scm->getIOService();
-    // boost::asio::io_service::work work(*io_service);
-    // while(true){
-    //   io_service->run();
-    // }
     return NULL;
   }
 #else
@@ -1362,9 +1355,7 @@ namespace extemp {
       // scm->start();
       // scm->addGlobalCptr((char*)"*io:osc:send-msg*",mk_cb(osc,OSC,sendOSC));
 
-#ifdef _WIN32
-    // todo insert boost TCP-OSC stuff here
-#else
+#ifndef _WIN32
       int socket_fd = socket(AF_INET, SOCK_STREAM, 0);
       if(socket_fd == -1) {
         std::cout << "Error opening TCP-OSC socket" << std::endl;
