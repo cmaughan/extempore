@@ -111,8 +111,7 @@
 #ifdef _WIN32
 #include <chrono>
 #include <thread>
-
-#ifndef _WIN32
+#else
 #include <unistd.h>
 #endif
 
