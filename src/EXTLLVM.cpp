@@ -785,6 +785,9 @@ void initLLVM()
     std::cout << LLVM_VERSION_STRING;
     std::cout << " MCJIT" << std::endl;
     ascii_normal();
+
+    std::cout << "*** Begin PM init ***" << std::flush;
+
     PM_NO = new llvm::legacy::PassManager();
     PM_NO->add(llvm::createAlwaysInlinerPass());
     PM = new llvm::legacy::PassManager();
@@ -808,6 +811,8 @@ void initLLVM()
     PM->add(llvm::createScalarReplAggregatesPass());
     PM->add(llvm::createSCCPPass());
     PM->add(llvm::createTailCallEliminationPass());
+
+    std::cout << "*** Completed PM init ***" << std::flush;
 
     static struct {
         const char* name;

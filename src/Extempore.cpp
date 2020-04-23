@@ -372,9 +372,13 @@ EXPORT int extempore_init(int argc, char** argv)
     // never exits - do that below
     [NSApplication sharedApplication];
 #endif
+    std::cout << "*** about to start audio dev ***" << std::flush;
     if (!extemp::UNIV::AUDIO_NONE) {
+	  std::cout << "*** about to start NOaudio dev ***" << std::flush;
         extemp::AudioDevice* dev = extemp::AudioDevice::I();
+		std::cout << "*** audio dev created ***" << std::flush;
         dev->start();
+		std::cout << "*** audio dev started ***" << std::flush;
     } else {
 	  // don't need this anymore, but we do need timediv to be > 1
 	  if (extemp::UNIV::TIME_DIVISION == 1) {
