@@ -1023,10 +1023,6 @@ if(APPLE)
   add_custom_command(TARGET extempore POST_BUILD
 	COMMENT "signing the $<TARGET_FILE:extempore> binary (to avoid annoying firewall pop-ups)"
 	COMMAND codesign --force --deep --sign - $<TARGET_FILE:extempore>)
-elseif(WIN32)
-  add_custom_command(TARGET extempore POST_BUILD
-	COMMENT "signing the $<TARGET_FILE:extempore> binary (to avoid annoying firewall pop-up)"
-	COMMAND New-NetFirewallRule -DisplayName "Allow Extempore" -Direction Inbound -Program "$<TARGET_FILE:extempore>" -RemoteAddress LocalSubnet -Action Allow)
 endif()
 
 #########
