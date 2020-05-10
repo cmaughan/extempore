@@ -37,3 +37,8 @@ foreach(aot-lib ${AOT_LIBS})
 #  message(FATAL_ERROR "Problem compiling ${aot-lib} error: ${aot_retval}")
 #endif()
 endforeach()
+
+add_custom_target(aot_external_graphics ALL)
+set_target_properties(aot_external_graphics PROPERTIES FOLDER AOT)
+add_dependencies(aot_external_graphics extempore)
+add_dependencies(aot_external_graphics external_shlibs_graphics)

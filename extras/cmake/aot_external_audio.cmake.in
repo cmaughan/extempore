@@ -33,3 +33,8 @@ foreach(aot-lib ${AOT_LIBS})
   #  message(FATAL_ERROR "Problem compiling ${aot-lib} error: ${aot_retval}")
   #endif()
 endforeach()
+
+add_custom_target(aot_external_audio ALL)
+set_target_properties(aot_external_audio PROPERTIES FOLDER AOT)
+add_dependencies(aot_external_audio extempore)
+add_dependencies(aot_external_audio external_shlibs_audio)
