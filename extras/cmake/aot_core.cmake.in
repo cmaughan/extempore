@@ -27,7 +27,3 @@ foreach(aot-lib ${AOT_LIBS})
   #  message(FATAL_ERROR "Problem compiling ${aot-lib} error: ${aot_retval}")
   #endif()
 endforeach()
-
-add_custom_target(aot_core ALL)
-set_target_properties(aot_core PROPERTIES FOLDER AOT)
-add_dependencies(aot_core extempore)

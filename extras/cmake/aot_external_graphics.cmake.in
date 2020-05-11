@@ -38,7 +38,5 @@ foreach(aot-lib ${AOT_LIBS})
 #endif()
 endforeach()
 
-add_custom_target(aot_external_graphics ALL)
-set_target_properties(aot_external_graphics PROPERTIES FOLDER AOT)
-add_dependencies(aot_external_graphics extempore)
+# also need this one
 add_dependencies(aot_external_graphics external_shlibs_graphics)

@@ -865,6 +865,7 @@ elseif(WIN32)
       COMMENT "Ahead-of-time compiling the ${file} standard library..."
       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
     set_target_properties(${file} PROPERTIES FOLDER AOT)
+	add_dependencies(${file} extempore)
   endmacro(aotcompile)
 
   aotcompile(aot_core)
