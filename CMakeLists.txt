@@ -737,8 +737,9 @@ elseif(WIN32)
       COMMAND ${CMAKE_COMMAND} -E copy lib/sndfile.lib ${EXT_PLATFORM_SHLIBS_DIR}
       WORKING_DIRECTORY ${EXT_DEPS_INSTALL_DIR})
     set_target_properties(external_shlibs_audio PROPERTIES FOLDER EXTERNAL_SHLIBS)
+  endif()
 
-  elseif(EXTERNAL_SHLIBS_GRAPHICS)
+  if(EXTERNAL_SHLIBS_GRAPHICS)
 
     add_custom_target(external_shlibs_graphics
       COMMENT "moving .dll and .lib files into ${EXT_PLATFORM_SHLIBS_DIR}"
