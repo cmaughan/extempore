@@ -10,8 +10,12 @@ extempore.lib
 /build
 /cmake-build
 /out # this is where MSVS puts the CMake build stuff
-/extras/cmake/aot.cmake
-/extras/cmake/aot_extended.cmake
+
+# these are all generated from the corresponding *.cmake.in templates
+/extras/cmake/aot_core.cmake
+/extras/cmake/aot_external.cmake
+/extras/cmake/aot_external_audio.cmake
+/extras/cmake/aot_external_graphics.cmake
 
 # AOT-compiled libraries
 /libs/aot-cache
